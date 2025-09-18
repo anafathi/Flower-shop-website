@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloom & Bliss — Flower Shop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-pink-50 text-gray-800">
+<!-- ================= Login Page (Disabled) ================= -->
+<!--
+<div id="loginPage" class="min-h-screen flex items-center justify-center bg-gradient-to-r from-pink-200 to-pink-100">
+  <div class="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center">
+    <h2 class="text-3xl font-bold text-pink-700 mb-6">🌸 Bloom & Bliss</h2>
+    <p class="mb-4 text-gray-600">Login to continue</p>
+
+    <input id="username" type="text" placeholder="Username" class="w-full border p-3 rounded-lg mb-4">
+    <input id="password" type="password" placeholder="Password" class="w-full border p-3 rounded-lg mb-6">
+    
+    <button onclick="login()" class="w-full py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition">Login</button>
+    <p id="error" class="text-red-500 mt-3 hidden">❌ Invalid username or password</p>
+  </div>
+</div>
+-->
+
+<!-- ================= Website Content ================= -->
+<div id="websiteContent" class="">
+ <!-- Navbar (Fixed at top) -->
+  <header class="bg-white shadow-md fixed w-full z-50 top-0">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-pink-600">🌸 Bloom & Bliss</h1>
+      <nav class="space-x-6">
+        <a href="#home" class="hover:text-pink-500">Home</a>
+        <a href="#products" class="hover:text-pink-500">Products</a>
+        <a href="#bouquet" class="hover:text-pink-500">Bouquet</a>
+        <a href="#about" class="hover:text-pink-500">About</a>
+        <a href="#contact" class="hover:text-pink-500">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+ <!-- Hero Section -->
+  <section id="home" class="bg-pink-100 py-32 md:py-20 mt-16">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center md:justify-between gap-6">
+      <!-- Text Content -->
+      <div class="md:w-1/2 text-center md:text-left">
+        <h2 class="text-4xl md:text-6xl font-bold text-pink-700">Fresh Flowers for Every Occasion</h2>
+        <p class="mt-4 text-lg text-gray-700">Brighten someone’s day with our handcrafted bouquets.</p>
+        <button onclick="scrollToProducts()" class="mt-6 px-6 py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition">
+        Shop Now
+        </button>
+      </div>
+
+    <!-- Image Content -->
+    <div class="md:w-1/2">
+      <img src="images/pic41.jpg" alt="Fresh Flowers" class="w-full h-full object-cover rounded-xl shadow-lg">
+    </div>
+
+  </div>
+</section>
+ <!-- About Section -->
+  <section id="about" class="bg-pink-100 py-16">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold text-pink-700">About Us</h3>
+      <p class="mt-4 text-gray-700 leading-relaxed">
+        At Bloom & Bliss, we believe flowers speak the language of love and joy. 
+        Every bouquet is designed with passion and delivered fresh to your doorstep.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- Product Section -->
+   <section id="products" class="max-w-7xl mx-auto px-6 py-16">
+    <h3 class="text-3xl font-bold text-center text-pink-700 mb-10">Our Products</h3>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Product Cards -->
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/pic28.jpg" alt="Roses" class="w-full h-32 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Red Roses</h4>
+          <p class="text-gray-600 mt-1">Perfect for love & romance</p>
+          <div class="flex justify-between items-center mt-3">
+            <span class="text-pink-600 font-bold">$25</span>
+            <button class="px-3 py-1 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/pic6.jpg" alt="Tulips" class="w-full h-32 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Yellow Tulips</h4>
+          <p class="text-gray-600 mt-1">Bring sunshine indoors</p>
+          <div class="flex justify-between items-center mt-3">
+            <span class="text-pink-600 font-bold">$18</span>
+            <button class="px-3 py-1 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/pic2.jpg" alt="Lilies" class="w-full h-32 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">White Lilies</h4>
+          <p class="text-gray-600 mt-1">Elegance for any event</p>
+          <div class="flex justify-between items-center mt-3">
+            <span class="text-pink-600 font-bold">$22</span>
+            <button class="px-3 py-1 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/pic29.jpg" alt="Sunflowers" class="w-full h-32 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Sunflowers</h4>
+          <p class="text-gray-600 mt-1">Golden petals that radiate happiness.</p>
+          <div class="flex justify-between items-center mt-3">
+            <span class="text-pink-600 font-bold">$10</span>
+            <button class="px-3 py-1 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/pic7.jpg" alt="Pink Carnations" class="w-full h-32 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Pink Carnations</h4>
+          <p class="text-gray-600 mt-1">Soft blossoms that whisper gratitude</p>
+          <div class="flex justify-between items-center mt-3">
+            <span class="text-pink-600 font-bold">$19</span>
+            <button class="px-3 py-1 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/pic3.jpg" alt="Lavender" class="w-full h-32 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Lavender</h4>
+          <p class="text-gray-600 mt-1">Calming fragrance with delicate charm.</p>
+          <div class="flex justify-between items-center mt-3">
+            <span class="text-pink-600 font-bold">$26</span>
+            <button class="px-3 py-1 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/pic11.jpg" alt="Daisies" class="w-full h-32 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Daisies</h4>
+          <p class="text-gray-600 mt-1">Cheerful blooms full of innocence.</p>
+          <div class="flex justify-between items-center mt-3">
+            <span class="text-pink-600 font-bold">$24</span>
+            <button class="px-3 py-1 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/pic12.jpg" alt="Peonies" class="w-full h-32 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Peonies</h4>
+          <p class="text-gray-600 mt-1">Lush flowers symbolizing prosperity.</p>
+          <div class="flex justify-between items-center mt-3">
+            <span class="text-pink-600 font-bold">$18</span>
+            <button class="px-3 py-1 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/pic9.jpg" alt="Baby’s Breath" class="w-full h-32 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Baby’s Breath</h4>
+          <p class="text-gray-600 mt-1">Tiny white blooms that add gentle grace.</p>
+          <div class="flex justify-between items-center mt-3">
+            <span class="text-pink-600 font-bold">$13</span>
+            <button class="px-3 py-1 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/pic30.jpg" alt="Cherry Blossoms" class="w-full h-32 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Cherry Blossoms</h4>
+          <p class="text-gray-600 mt-1">Soft pink petals that celebrate new beginnings</p>
+          <div class="flex justify-between items-center mt-3">
+            <span class="text-pink-600 font-bold">$16</span>
+            <button class="px-3 py-1 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/pic31.jpg" alt="Jasmine" class="w-full h-32 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Jasmine</h4>
+          <p class="text-gray-600 mt-1">Fragrant white blooms that soothe the soul.</p>
+          <div class="flex justify-between items-center mt-3">
+            <span class="text-pink-600 font-bold">$27</span>
+            <button class="px-3 py-1 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/pic32.jpg" alt="Marigolds" class="w-full h-32 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Marigolds</h4>
+          <p class="text-gray-600 mt-1">Vibrant flowers that spread warmth and energy.</p>
+          <div class="flex justify-between items-center mt-3">
+            <span class="text-pink-600 font-bold">$29</span>
+            <button class="px-3 py-1 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/pic10.jpg" alt="Iris" class="w-full h-32 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Iris</h4>
+          <p class="text-gray-600 mt-1">Elegant blooms that stand for hope and wisdom.</p>
+          <div class="flex justify-between items-center mt-3">
+            <span class="text-pink-600 font-bold">$30</span>
+            <button class="px-3 py-1 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/pic8.jpg" alt="Camellias" class="w-full h-32 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Camellias</h4>
+          <p class="text-gray-600 mt-1">Graceful blossoms that signify admiration.</p>
+          <div class="flex justify-between items-center mt-3">
+            <span class="text-pink-600 font-bold">$32</span>
+            <button class="px-3 py-1 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/pic33.jpg" alt="Magnolias" class="w-full h-32 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Magnolias</h4>
+          <p class="text-gray-600 mt-1">Bold, timeless flowers full of dignity.</p>
+          <div class="flex justify-between items-center mt-3">
+            <span class="text-pink-600 font-bold">$21</span>
+            <button class="px-3 py-1 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/pic34.jpg" alt="Lotus" class="w-full h-32 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Lotus</h4>
+          <p class="text-gray-600 mt-1">Sacred bloom symbolizing purity and peace.</p>
+          <div class="flex justify-between items-center mt-3">
+            <span class="text-pink-600 font-bold">$29</span>
+            <button class="px-3 py-1 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Add</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+ 
+  <!-- Bouquet Section -->
+<section id="bouquet" class="bg-white py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <h3 class="text-3xl font-bold text-center text-pink-700 mb-10">Bouquet Gallery</h3>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div class="overflow-hidden rounded-xl shadow-md">
+        <img src="images/pic14.jpg" alt="Bouquet 1" class="w-full h-56 object-cover hover:scale-105 transition duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-md">
+        <img src="images/pic15.jpg" alt="Bouquet 2" class="w-full h-56 object-cover hover:scale-105 transition duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-md">
+        <img src="images/pic20.jpg" alt="Bouquet 3" class="w-full h-56 object-cover hover:scale-105 transition duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-md">
+        <img src="images/pic17.jpg" alt="Bouquet 4" class="w-full h-56 object-cover hover:scale-105 transition duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-md">
+        <img src="images/pic18.jpg" alt="Bouquet 5" class="w-full h-56 object-cover hover:scale-105 transition duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-md">
+        <img src="images/pic19.jpg" alt="Bouquet 6" class="w-full h-56 object-cover hover:scale-105 transition duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-md">
+        <img src="images/pic16.jpg" alt="Bouquet 6" class="w-full h-56 object-cover hover:scale-105 transition duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-md">
+        <img src="images/pic21.jpg" alt="Bouquet 6" class="w-full h-56 object-cover hover:scale-105 transition duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-md">
+        <img src="images/pic22.jpg" alt="Bouquet 6" class="w-full h-56 object-cover hover:scale-105 transition duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-md">
+        <img src="images/pic25.jpg" alt="Bouquet 6" class="w-full h-56 object-cover hover:scale-105 transition duration-300">
+      </div>
+      <div class="overflow-hidden rounded-xl shadow-md">
+        <img src="images/pic24.jpg" alt="Bouquet 6" class="w-full h-56 object-cover hover:scale-105 transition duration-300">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Contact Section -->
+  <section id="contact" class="max-w-5xl mx-auto px-6 py-16">
+    <h3 class="text-3xl font-bold text-center text-pink-700 mb-6">Contact Us</h3>
+    <form class="max-w-xl mx-auto space-y-4">
+      <input type="text" placeholder="Your Name" class="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+      <input type="email" placeholder="Your Email" class="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+      <textarea rows="4" placeholder="Your Message" class="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"></textarea>
+      <button type="submit" class="w-full py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-700">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-pink-600 text-white py-6 text-center">
+    <p>&copy; 2025 Bloom & Bliss. All rights reserved.</p>
+  </footer>
+</div>
+
+<!-- ================= JS Validation ================= -->
+<script>
+
+// Scroll to Products section
+  function scrollToProducts() {
+    const productsSection = document.getElementById("products");
+    productsSection.scrollIntoView({ behavior: "smooth" });
+  }
+
+  function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    const errorMsg = document.getElementById("error");
+
+    if (user === "admin" && pass === "1234") {
+      document.getElementById("loginPage").classList.add("hidden");
+      document.getElementById("websiteContent").classList.remove("hidden");
+    } else {
+      errorMsg.classList.remove("hidden");
+    }
+  }
+
+  // Cart alert
+  document.addEventListener("click", (e) => {
+    if (e.target.tagName === "BUTTON" && e.target.textContent === "Add") {
+      alert("Item added to cart!");
+    }
+  });
+</script>
+
+</body>
+</html>

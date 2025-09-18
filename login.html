@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login, Sign Up & Reset Password — Tailwind CSS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-teal-400 via-cyan-400 to-pink-500 min-h-screen flex items-center justify-center p-6">
+
+  <div class="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-md">
+    <!-- Tabs -->
+    <div class="flex justify-center mb-6 space-x-6">
+      <button id="loginTab" class="text-indigo-700 font-bold border-b-2 border-indigo-700 pb-1">Login</button>
+      <button id="signupTab" class="text-gray-500 font-bold border-b-2 border-transparent pb-1 hover:text-indigo-700">Sign Up</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="space-y-4">
+      <div>
+        <label for="loginEmail" class="block text-sm font-medium text-gray-700">Email</label>
+        <input type="email" id="loginEmail" placeholder="Enter your email"
+          class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required>
+      </div>
+
+      <div>
+        <label for="loginPassword" class="block text-sm font-medium text-gray-700">Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter your password"
+          class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" class="h-4 w-4 text-indigo-600 rounded focus:ring-indigo-500">
+          <span class="text-sm text-gray-600">Remember me</span>
+        </label>
+        <a href="#" id="forgotLink" class="text-sm text-indigo-600 hover:underline">Forgot password?</a>
+      </div>
+
+      <button type="submit"
+        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-lg shadow-md transition transform hover:scale-105">
+        Login
+      </button>
+    </form>
+
+    <!-- Sign Up Form -->
+    <form id="signupForm" class="space-y-4 hidden">
+      <div>
+        <label for="fullname" class="block text-sm font-medium text-gray-700">Full Name</label>
+        <input type="text" id="fullname" placeholder="Enter your full name"
+          class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required>
+      </div>
+
+      <div>
+        <label for="signupEmail" class="block text-sm font-medium text-gray-700">Email</label>
+        <input type="email" id="signupEmail" placeholder="Enter your email"
+          class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required>
+      </div>
+
+      <div>
+        <label for="signupPassword" class="block text-sm font-medium text-gray-700">Password</label>
+        <input type="password" id="signupPassword" placeholder="Enter your password"
+          class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required>
+      </div>
+
+      <div>
+        <label for="confirmPassword" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="Confirm your password"
+          class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required>
+      </div>
+
+      <div class="flex items-center space-x-2">
+        <input type="checkbox" id="terms" class="h-4 w-4 text-indigo-600 rounded focus:ring-indigo-500" required>
+        <label for="terms" class="text-sm text-gray-600">I agree to the <a href="#" class="text-indigo-600 hover:underline">Terms & Conditions</a></label>
+      </div>
+
+      <button type="submit"
+        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-lg shadow-md transition transform hover:scale-105">
+        Sign Up
+      </button>
+    </form>
+
+    <!-- Forgot Password Form -->
+    <form id="forgotForm" class="space-y-4 hidden">
+      <div>
+        <label for="forgotEmail" class="block text-sm font-medium text-gray-700">Enter your email to reset password</label>
+        <input type="email" id="forgotEmail" placeholder="Your email"
+          class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required>
+      </div>
+      <button type="submit"
+        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-lg shadow-md transition transform hover:scale-105">
+        Send Reset Link
+      </button>
+      <p class="text-center text-sm text-gray-600 mt-2">
+        <a href="#" id="backLogin" class="text-indigo-600 hover:underline">Back to Login</a>
+      </p>
+    </form>
+  </div>
+
+  <script>
+    const loginTab = document.getElementById('loginTab');
+    const signupTab = document.getElementById('signupTab');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    const forgotForm = document.getElementById('forgotForm');
+    const forgotLink = document.getElementById('forgotLink');
+    const backLogin = document.getElementById('backLogin');
+
+    loginTab.addEventListener('click', () => {
+      loginForm.classList.remove('hidden');
+      signupForm.classList.add('hidden');
+      forgotForm.classList.add('hidden');
+      loginTab.classList.add('text-indigo-700', 'border-indigo-700');
+      loginTab.classList.remove('text-gray-500', 'border-transparent');
+      signupTab.classList.add('text-gray-500', 'border-transparent');
+      signupTab.classList.remove('text-indigo-700', 'border-indigo-700');
+    });
+
+    signupTab.addEventListener('click', () => {
+      signupForm.classList.remove('hidden');
+      loginForm.classList.add('hidden');
+      forgotForm.classList.add('hidden');
+      signupTab.classList.add('text-indigo-700', 'border-indigo-700');
+      signupTab.classList.remove('text-gray-500', 'border-transparent');
+      loginTab.classList.add('text-gray-500', 'border-transparent');
+      loginTab.classList.remove('text-indigo-700', 'border-indigo-700');
+    });
+
+    forgotLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      forgotForm.classList.remove('hidden');
+      loginForm.classList.add('hidden');
+      signupForm.classList.add('hidden');
+    });
+
+    backLogin.addEventListener('click', (e) => {
+      e.preventDefault();
+      forgotForm.classList.add('hidden');
+      loginForm.classList.remove('hidden');
+    });
+
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      if (!email || !password) {
+        alert("Please fill in both fields.");
+        return;
+      }
+      alert(`Login Successful!\nEmail: ${email}`);
+      loginForm.reset();
+    });
+
+    signupForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const fullname = document.getElementById('fullname').value.trim();
+      const email = document.getElementById('signupEmail').value.trim();
+      const password = document.getElementById('signupPassword').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const terms = document.getElementById('terms').checked;
+      if (!fullname || !email || !password || !confirmPassword) {
+        alert("Please fill in all fields.");
+        return;
+      }
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+      if (!terms) {
+        alert("You must agree to the Terms & Conditions.");
+        return;
+      }
+      alert(`Sign Up Successful!\nName: ${fullname}\nEmail: ${email}`);
+      signupForm.reset();
+    });
+
+    forgotForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('forgotEmail').value.trim();
+      if (!email) {
+        alert("Please enter your email.");
+        return;
+      }
+      alert(`Password reset link sent to ${email}`);
+      forgotForm.reset();
+      forgotForm.classList.add('hidden');
+      loginForm.classList.remove('hidden');
+    });
+  </script>
+
+</body>
+</html>
