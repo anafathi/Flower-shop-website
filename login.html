@@ -69,23 +69,10 @@
     }
   }
 
-  // Login Function
-  function login() {
-    const username = document.getElementById("loginUsername").value;
-    const password = document.getElementById("loginPassword").value;
-    const errorMsg = document.getElementById("loginError");
-
-    if(username === "admin" && password === "1234") {
-      window.location.href = "index.html";
-    } else {
-      errorMsg.classList.remove("hidden");
-    }
-  }
-
-  // Signup Function (basic validation)
+  // Signup Function (store in localStorage)
   function signup() {
-    const username = document.getElementById("signupUsername").value;
-    const email = document.getElementById("signupEmail").value;
+    const username = document.getElementById("signupUsername").value.trim();
+    const email = document.getElementById("signupEmail").value.trim();
     const password = document.getElementById("signupPassword").value;
     const confirmPassword = document.getElementById("signupConfirmPassword").value;
     const errorMsg = document.getElementById("signupError");
@@ -106,7 +93,9 @@
       return;
     }
 
-    // Here you can add code to store user details in database/local storage
+    // Save user to localStorage
+    localStorage.setItem("user_"+username, JSON.stringify({email, password}));
+
     successMsg.classList.remove("hidden");
 
     // Clear fields
@@ -114,6 +103,27 @@
     document.getElementById("signupEmail").value = "";
     document.getElementById("signupPassword").value = "";
     document.getElementById("signupConfirmPassword").value = "";
+  }
+
+  // Login Function (check from localStorage)
+  function login() {
+    const username = document.getElementById("loginUsername").value.trim();
+    const password = document.getElementById("loginPassword").value;
+    const errorMsg = document.getElementById("loginError");
+
+    errorMsg.classList.add("hidden");
+
+    const user = localStorage.getItem("user_"+username);
+    if(user) {
+      const userData = JSON.parse(user);
+      if(userData.password === password) {
+        // Redirect to homepage
+        window.location.href = "index.html";
+        return;
+      }
+    }
+
+    errorMsg.classList.remove("hidden");
   }
 </script>
 
