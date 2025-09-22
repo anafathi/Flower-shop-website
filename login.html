@@ -3,37 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bloom & Bliss — Login</title>
+  <title>Bloom & Bliss — Login / Signup</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .hidden-tab { display: none; }
+  </style>
 </head>
 <body class="bg-pink-50 text-gray-800">
 
-<div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-pink-200 to-pink-100">
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-pink-200 to-pink-100 px-4">
   <div class="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center">
-    <h2 class="text-3xl font-bold text-pink-700 mb-6">🌸 Bloom & Bliss</h2>
-    <p class="mb-4 text-gray-600">Login to continue</p>
 
-    <input id="username" type="text" placeholder="Username" class="w-full border p-3 rounded-lg mb-4">
-    <input id="password" type="password" placeholder="Password" class="w-full border p-3 rounded-lg mb-6">
-    
-    <button onclick="login()" class="w-full py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition">Login</button>
-    <p id="error" class="text-red-500 mt-3 hidden">❌ Invalid username or password</p>
+    <h2 class="text-3xl font-bold text-pink-700 mb-6">🌸 Bloom & Bliss</h2>
+
+    <!-- Toggle Buttons -->
+    <div class="flex justify-center mb-6 space-x-4">
+      <button id="loginTabBtn" class="px-4 py-2 font-semibold rounded-lg bg-pink-600 text-white hover:bg-pink-700 transition" onclick="showTab('login')">Login</button>
+      <button id="signupTabBtn" class="px-4 py-2 font-semibold rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition" onclick="showTab('signup')">Sign Up</button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginTab">
+      <input id="loginUsername" type="text" placeholder="Username" class="w-full border p-3 rounded-lg mb-4">
+      <input id="loginPassword" type="password" placeholder="Password" class="w-full border p-3 rounded-lg mb-6">
+      <button onclick="login()" class="w-full py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition mb-3">Login</button>
+      <p id="loginError" class="text-red-500 mt-2 hidden">❌ Invalid username or password</p>
+    </div>
+
+    <!-- Signup Form -->
+    <div id="signupTab" class="hidden-tab">
+      <input id="signupUsername" type="text" placeholder="Username" class="w-full border p-3 rounded-lg mb-4">
+      <input id="signupEmail" type="email" placeholder="Email" class="w-full border p-3 rounded-lg mb-4">
+      <input id="signupPassword" type="password" placeholder="Password" class="w-full border p-3 rounded-lg mb-4">
+      <input id="signupConfirmPassword" type="password" placeholder="Confirm Password" class="w-full border p-3 rounded-lg mb-6">
+      <button onclick="signup()" class="w-full py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition mb-3">Sign Up</button>
+      <p id="signupError" class="text-red-500 mt-2 hidden"></p>
+      <p id="signupSuccess" class="text-green-500 mt-2 hidden">✅ Signup successful! You can now login.</p>
+    </div>
+
   </div>
 </div>
 
 <script>
-  function login() {
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-    const errorMsg = document.getElementById("error");
+  // Tab switching
+  function showTab(tab) {
+    const loginTab = document.getElementById("loginTab");
+    const signupTab = document.getElementById("signupTab");
+    const loginBtn = document.getElementById("loginTabBtn");
+    const signupBtn = document.getElementById("signupTabBtn");
 
-    if (username === "admin" && password === "1234") {
-      // Correct credentials → redirect to index.html
+    if(tab === "login") {
+      loginTab.classList.remove("hidden-tab");
+      signupTab.classList.add("hidden-tab");
+      loginBtn.classList.add("bg-pink-600","text-white");
+      loginBtn.classList.remove("bg-gray-200","text-gray-700");
+      signupBtn.classList.add("bg-gray-200","text-gray-700");
+      signupBtn.classList.remove("bg-pink-600","text-white");
+    } else {
+      signupTab.classList.remove("hidden-tab");
+      loginTab.classList.add("hidden-tab");
+      signupBtn.classList.add("bg-pink-600","text-white");
+      signupBtn.classList.remove("bg-gray-200","text-gray-700");
+      loginBtn.classList.add("bg-gray-200","text-gray-700");
+      loginBtn.classList.remove("bg-pink-600","text-white");
+    }
+  }
+
+  // Login Function
+  function login() {
+    const username = document.getElementById("loginUsername").value;
+    const password = document.getElementById("loginPassword").value;
+    const errorMsg = document.getElementById("loginError");
+
+    if(username === "admin" && password === "1234") {
       window.location.href = "index.html";
     } else {
-      // Wrong credentials → show error
       errorMsg.classList.remove("hidden");
     }
+  }
+
+  // Signup Function (basic validation)
+  function signup() {
+    const username = document.getElementById("signupUsername").value;
+    const email = document.getElementById("signupEmail").value;
+    const password = document.getElementById("signupPassword").value;
+    const confirmPassword = document.getElementById("signupConfirmPassword").value;
+    const errorMsg = document.getElementById("signupError");
+    const successMsg = document.getElementById("signupSuccess");
+
+    errorMsg.classList.add("hidden");
+    successMsg.classList.add("hidden");
+
+    if(!username || !email || !password || !confirmPassword){
+      errorMsg.textContent = "❌ All fields are required!";
+      errorMsg.classList.remove("hidden");
+      return;
+    }
+
+    if(password !== confirmPassword){
+      errorMsg.textContent = "❌ Passwords do not match!";
+      errorMsg.classList.remove("hidden");
+      return;
+    }
+
+    // Here you can add code to store user details in database/local storage
+    successMsg.classList.remove("hidden");
+
+    // Clear fields
+    document.getElementById("signupUsername").value = "";
+    document.getElementById("signupEmail").value = "";
+    document.getElementById("signupPassword").value = "";
+    document.getElementById("signupConfirmPassword").value = "";
   }
 </script>
 
